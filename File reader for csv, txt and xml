@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+ 
+ public class CSVFileReader
+    {
+        public List<string> ReadAllColumnsInCsvFile(string[] filePath)
+        {
+            List<string> lstOfRows = new List<string>();
+          
+            try
+            {
+                foreach (var item in filePath)
+                {
+                    var reader = new StreamReader(File.OpenRead(item));
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        lstOfRows.Add(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                 
+            }        
+
+            return lstOfRows;
+        }
+    }
